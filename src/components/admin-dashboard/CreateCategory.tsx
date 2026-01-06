@@ -5,6 +5,8 @@ import { createCategory, getAllCategories } from "../../service/ProductService.t
 export default function CreateCategory() {
     const [categoryName, setCategoryName] = useState<string>("");
     const [categoryDto, setCategoryDto] = useState<CategoryDto[]>([]);
+    const [errorMessage, setErrorMessage] = useState<string>("");
+    const [successMessage, setSuccessMessage] = useState<string>("");
 
     const fetchAllCategories = () => {
         getAllCategories()
@@ -14,13 +16,24 @@ export default function CreateCategory() {
 
     const createCategoryHandler = (e: FormEvent) => {
         e.preventDefault();
+        setErrorMessage("");
+        setSuccessMessage("");
         const categoryDto: CategoryDto = { categoryName };
         createCategory(categoryDto)
             .then(() => {
                 setCategoryName("");
                 fetchAllCategories();
+                setSuccessMessage("Category created successfully.");
+                setTimeout(() => setSuccessMessage(""), 3000);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                if (err.response && err.response.data && err.response.data.error) {
+                    setErrorMessage(err.response.data.error);
+                } else {
+                    setErrorMessage("Something went wrong!");
+                }
+                setTimeout(() => setErrorMessage(""), 3000);
+            });
     };
 
     useEffect(() => {
@@ -59,6 +72,13 @@ export default function CreateCategory() {
                            transition-colors duration-300 cursor-pointer">
                         Add Category
                     </button>
+
+                    {errorMessage && (
+                        <p className="text-red-600 text-sm mt-2">{errorMessage}</p>
+                    )}
+                    {successMessage && (
+                        <p className="text-green-600 text-sm mt-2">{successMessage}</p>
+                    )}
                 </form>
 
                 <div className="mt-5">

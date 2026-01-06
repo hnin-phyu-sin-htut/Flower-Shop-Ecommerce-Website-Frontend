@@ -39,10 +39,10 @@ export default function CreateProduct() {
             setQuantity(undefined);
             setCategoryId("");
             setImage("");
-            setMessage({ type: "success", text: "Flower created successfully!" });
+            setMessage({ type: "success", text: "Flower created successfully." });
         } catch (err) {
             console.error(err);
-            setMessage({ type: "error", text: "Failed to create flower." });
+            setMessage({ type: "error", text: "Failed to create flower!" });
         }
 
         setTimeout(() => setMessage(null), 3000);
@@ -106,8 +106,7 @@ export default function CreateProduct() {
                             value={categoryId ?? ""}
                             onChange={e => setCategoryId(e.target.value)}
                             className="w-full text-black rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#C21E56] focus:border-transparent shadow-sm bg-white"
-                            required
-                        >
+                            required>
                             <option value="">Select category</option>
                             {categories.map(cat => (
                                 <option key={cat.id} value={cat.id}>

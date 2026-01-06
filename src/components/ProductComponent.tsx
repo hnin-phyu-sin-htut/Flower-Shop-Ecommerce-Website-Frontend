@@ -110,7 +110,7 @@ export default function ProductComponent() {
                         className="relative rounded-xl border-2 border-[#C21E56]
                         shadow-md bg-white p-6 flex flex-col items-center">
                         <img
-                            src={item.image ? `http://localhost:8080${item.image}` : "/images/no-images.png"}
+                            src={item.image ? `http://localhost:2024${item.image}` : "/images/no-images.png"}
                             alt={item.name}
                             className="w-full h-48 object-contain rounded-xl mb-4"/>
 

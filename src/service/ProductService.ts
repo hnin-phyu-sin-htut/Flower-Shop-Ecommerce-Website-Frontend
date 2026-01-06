@@ -4,47 +4,44 @@ import type {CategoryDto} from "../model/CategoryDto.ts";
 import type {ProductDto} from "../model/ProductDto.ts";
 
 const HOME_FLOWER_BACKEND_URL = "http://localhost:3000/home-flowers";
-const CATEGORY_BACKEND_URL = "http://localhost:8080/api/category";
-const PRODUCTS_BACKEND_URL = "http://localhost:8080/api/products";
-const API_URL = "http://localhost:8080/api/cart";
+const CATEGORY_BACKEND_URL = "http://localhost:2024/Flower-Shop-Ecommerce-Website-Backend/api/category";
+const PRODUCTS_BACKEND_URL = "http://localhost:2024/Flower-Shop-Ecommerce-Website-Backend/api/products";
+const API_URL = "http://localhost:2024/Flower-Shop-Ecommerce-Website-Backend/api/cart";
 
 export const listAllHomeProducts = () =>
     axios.get<HomeFlower[]>(HOME_FLOWER_BACKEND_URL);
 
 export const fetchAllProducts = () =>
-    axios.get<ProductDto[]>(`${PRODUCTS_BACKEND_URL}/products-list`);
-
-export const listAllProductsByCategory= (categoryName: string) =>
-    axios.get<ProductDto[]>(`${PRODUCTS_BACKEND_URL}/${categoryName}`);
+    axios.get<ProductDto[]>(`${PRODUCTS_BACKEND_URL}/products-list.php`);
 
 export const createProduct = (product: FormData) =>
-    axios.post<string>(`${PRODUCTS_BACKEND_URL}/create-product`, product, {
+    axios.post<string>(`${PRODUCTS_BACKEND_URL}/create-product.php`, product, {
         headers: {
             "Content-Type": "multipart/form-data"
         }
     });
 
 export const createCategory= (categoryDto: CategoryDto) =>
-    axios.post<string>(`${CATEGORY_BACKEND_URL}/create-category`, categoryDto, {
+    axios.post<string>(`${CATEGORY_BACKEND_URL}/create-category.php`, categoryDto, {
         headers: {
             "Content-Type": "application/json"
         }
     });
 
 export const getAllCategories = () =>
-    axios.get<CategoryDto[]>(`${CATEGORY_BACKEND_URL}/category-list`);
+    axios.get<CategoryDto[]>(`${CATEGORY_BACKEND_URL}/category-list.php`);
 
-export const editProduct = (formData: FormData, id:number) =>
-    axios.put<ProductDto>(`${PRODUCTS_BACKEND_URL}/edit/${id}`, formData, {
+export const editProduct = (formData: FormData, id: number) =>
+    axios.post<ProductDto>(`${PRODUCTS_BACKEND_URL}/edit.php?id=${id}`, formData, {
         headers: { "Content-Type": "multipart/form-data" }
     });
 
 export const deleteProductById = (id: number) =>
-    axios.delete(`${PRODUCTS_BACKEND_URL}/delete/${id}`);
+    axios.delete(`${PRODUCTS_BACKEND_URL}/delete.php?id=${id}`);
 
 export const checkout = (items: { id: number; quantity: number; price: number; }[], token: string) =>
     axios.post(
-        API_URL + "/checkout",
+        API_URL + "/checkout.php",
         items.map(item => ({
             id: item.id,
             quantity: item.quantity,

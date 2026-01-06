@@ -29,7 +29,11 @@ export default function EditProduct() {
         setName(product.name);
         setPrice(Number(product.price));
         setImageFile(null);
-        setPreview(`http://localhost:8080/api/products/${product.id}/image`);
+        if (product.image) {
+            setPreview(`http://localhost:2024${product.image}`);
+        } else {
+            setPreview(`/images/no-image.png`);
+        }
         setIsModalOpen(true);
     };
 
@@ -52,7 +56,12 @@ export default function EditProduct() {
         const formData = new FormData();
         formData.append("name", name);
         formData.append("price", price.toString());
-        if (imageFile) formData.append("image", imageFile);
+        formData.append("quantity", selectedProduct.quantity.toString());
+        formData.append("categoryId", selectedProduct.categoryId.toString());
+
+        if (imageFile) {
+            formData.append("image", imageFile);
+        }
 
         editProduct(formData, selectedProduct.id)
             .then(() => {
@@ -125,12 +134,15 @@ export default function EditProduct() {
                                     </span>
                                 </td>
                                 <td className="px-6 py-4 flex justify-center">
-                                    {p.image && (
-                                        <img
-                                            src={`http://localhost:8080/api/products/${p.id}/image`}
-                                            className="h-14 w-14 rounded-full object-cover ring-2 ring-[#C21E56]"
-                                        />
-                                    )}
+                                    <img
+                                        src={
+                                            p.image
+                                                ? `http://localhost:2024${p.image}`
+                                                : "/images/no-image.png"
+                                        }
+                                        className="h-14 w-14 rounded-full object-cover ring-2 ring-[#C21E56]"
+                                        alt={p.name}
+                                    />
                                 </td>
                                 <td className="px-6 py-4 text-center space-x-2">
                                     <button
