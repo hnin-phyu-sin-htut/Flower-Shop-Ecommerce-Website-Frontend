@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import type { OrderInfo } from "../model/OrderInfo";
-import { getToken } from "../service/AuthService";
 import { checkout } from "../service/ProductService";
 
 export default function CartViewComponent() {
@@ -45,13 +44,16 @@ export default function CartViewComponent() {
     };
 
     const confirmOrder = async () => {
-        const token = getToken();
-        if (!token) {
-            setError("You must be logged in to confirm order.");
+        // const token = getToken();
+        const role = "ROLE_CUSTOMER"
+        if (!role) {
+            setError("Only customers can order flowers.");
             return;
         }
         setLoading(true);
         setError("");
+
+        await Promise.resolve();
 
         try {
             const response = await checkout(
@@ -60,7 +62,8 @@ export default function CartViewComponent() {
                     quantity: item.quantity,
                     price: item.price
                 })),
-                token
+                // token
+                role
             );
 
             if (response.data?.products?.length) {
@@ -72,10 +75,11 @@ export default function CartViewComponent() {
                         response.data.id,
                 });
                 setConfirmed(true);
+
                 setTimeout(() => {
                     navigate("/");
                     cart.clearCart();
-                }, 5000);
+                }, 3000);
             } else {
                 setError("Failed to save order.");
             }
@@ -95,7 +99,6 @@ export default function CartViewComponent() {
 
             {error && <p className="text-red-600 mb-4 text-center">{error}</p>}
 
-            {/* Cart Table */}
             <div className="overflow-x-auto rounded-2xl shadow-lg bg-white">
                 <table className="min-w-full table-auto">
                     <thead className="bg-[#C21E56] text-white">
@@ -121,7 +124,7 @@ export default function CartViewComponent() {
                                 <td className="text-center text-[#C21E56] py-2">{item.id}</td>
                                 <td className="flex justify-center py-2">
                                     <img
-                                        src={item.image ? `http://localhost:8080${item.image}` : "/images/no-images.png"}
+                                        src={item.image ? `http://localhost:2024${item.image}` : "/images/no-images.png"}
                                         alt={item.name}
                                         className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-contain border"
                                     />
@@ -175,7 +178,6 @@ export default function CartViewComponent() {
                 </table>
             </div>
 
-            {/* Checkout Button */}
             {items.length > 0 && (
                 <div className="mt-6 flex justify-end">
                     <button
@@ -187,7 +189,6 @@ export default function CartViewComponent() {
                 </div>
             )}
 
-            {/* Order Summary */}
             {orderInfo && (
                 <div className="mt-10 p-6 bg-[#C21E56] rounded-xl shadow-lg text-white">
                     <h2 className="text-2xl font-semibold mb-4 text-center">Order Summary</h2>
@@ -227,15 +228,14 @@ export default function CartViewComponent() {
                         </table>
                     </div>
 
-                    {/* Confirm Order Button */}
                     {!confirmed && (
                         <div className="flex justify-center mt-4">
                             <button
                                 onClick={confirmOrder}
                                 disabled={loading}
                                 className="px-6 py-3 font-semibold rounded-full bg-white text-[#C21E56] shadow-lg
-                                transition cursor-pointer hover:bg-[#C21E56] hover:text-white hover:border hover:border-white"
-                            >
+                                transition cursor-pointer hover:bg-[#C21E56] hover:text-white hover:border
+                                hover:border-white">
                                 {loading ? "Confirming..." : "Confirm Order"}
                             </button>
                         </div>

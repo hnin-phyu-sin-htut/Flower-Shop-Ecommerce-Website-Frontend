@@ -33,9 +33,6 @@ export const getRoleName = () =>
 export const setLoggedInUserName = (username: string) =>
     sessionStorage.setItem("username", username);
 
-export const getLoggedInUserName = () =>
-    sessionStorage.getItem("username");
-
 export const isAdmin = () =>
     getRoleName() === "ROLE_ADMIN";
 

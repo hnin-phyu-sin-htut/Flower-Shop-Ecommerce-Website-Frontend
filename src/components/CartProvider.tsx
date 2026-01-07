@@ -20,12 +20,10 @@ export const CartProvider = ({ children }: Props) => {
         setItems(prev => {
             const exists = prev.find(i => i.id === item.id);
             if (exists) {
-                // Increase by 1 instead of item.quantity
                 return prev.map(i =>
                     i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
                 );
             }
-            // When adding new item, default quantity to 1
             return [...prev, { ...item, quantity: 1 }];
         });
     };
