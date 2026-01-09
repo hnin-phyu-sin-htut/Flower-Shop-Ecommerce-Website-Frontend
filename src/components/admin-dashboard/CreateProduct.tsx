@@ -6,7 +6,7 @@ export default function CreateProduct() {
     const [categories, setCategories] = useState<CategoryDto[]>([]);
     const [name, setName] = useState("");
     const [price, setPrice] = useState<number>();
-    const [quantity, setQuantity] = useState<number>();
+    // const [quantity, setQuantity] = useState<number>();
     const [categoryId, setCategoryId] = useState<string>("");
     const [image, setImage] = useState<File | "">("");
     const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
@@ -20,15 +20,15 @@ export default function CreateProduct() {
     const createProductHandler = async (e: FormEvent) => {
         e.preventDefault();
 
-        if (!name || !price || !quantity || !categoryId || !image) {
-            setMessage({ type: "error", text: "Please fill all fields." });
+        if (!name || !price || !categoryId || !image) {
+            setMessage({ type: "error", text: "Please fill in all required fields." });
             return;
         }
 
         const formData = new FormData();
         formData.append("name", name);
         formData.append("price", price.toString());
-        formData.append("quantity", quantity.toString());
+        // formData.append("quantity", quantity.toString());
         formData.append("categoryId", categoryId);
         formData.append("image", image);
 
@@ -36,10 +36,10 @@ export default function CreateProduct() {
             await createProduct(formData);
             setName("");
             setPrice(undefined);
-            setQuantity(undefined);
+            // setQuantity(undefined);
             setCategoryId("");
             setImage("");
-            setMessage({ type: "success", text: "Flower created successfully." });
+            setMessage({ type: "success", text: "Flower created successfully!" });
         } catch (err) {
             console.error(err);
             setMessage({ type: "error", text: "Failed to create flower!" });
@@ -84,18 +84,6 @@ export default function CreateProduct() {
                             onChange={(e) => setPrice(Number(e.target.value))}
                             className="w-full text-black rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#C21E56] focus:border-transparent shadow-sm"
                             placeholder="Enter price"
-                            required
-                        />
-                    </div>
-
-                    <div>
-                        <label className="block text-md font-medium text-gray-600 mb-2">Quantity</label>
-                        <input
-                            type="number"
-                            value={quantity ?? ""}
-                            onChange={(e) => setQuantity(Number(e.target.value))}
-                            className="w-full text-black rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#C21E56] focus:border-transparent shadow-sm"
-                            placeholder="Enter quantity"
                             required
                         />
                     </div>

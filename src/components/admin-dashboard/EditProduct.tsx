@@ -31,7 +31,7 @@ export default function EditProduct() {
         setImageFile(null);
         if (product.image) {
             setPreview(`http://localhost:2024${product.image}`);
-        } else {
+        }else {
             setPreview(`/images/no-image.png`);
         }
         setIsModalOpen(true);
@@ -56,7 +56,6 @@ export default function EditProduct() {
         const formData = new FormData();
         formData.append("name", name);
         formData.append("price", price.toString());
-        formData.append("quantity", selectedProduct.quantity.toString());
         formData.append("categoryId", selectedProduct.categoryId.toString());
 
         if (imageFile) {
@@ -81,7 +80,7 @@ export default function EditProduct() {
             })
             .catch(err => {
                 console.error(err);
-                alert("Failed to delete flower.!");
+                alert("Failed to delete flower!");
             });
     };
 

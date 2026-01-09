@@ -18,9 +18,6 @@ export const logout =() =>{
 export const setToken = (token: string) =>
     localStorage.setItem("token", token);
 
-export const getToken = () =>
-    localStorage.getItem("token");
-
 export const isLoggedIn = () =>
     localStorage.getItem("token") !== null;
 
@@ -32,9 +29,3 @@ export const getRoleName = () =>
 
 export const setLoggedInUserName = (username: string) =>
     sessionStorage.setItem("username", username);
-
-export const isAdmin = () =>
-    getRoleName() === "ROLE_ADMIN";
-
-export const isCustomer = () =>
-    getRoleName() === "ROLE_CUSTOMER";

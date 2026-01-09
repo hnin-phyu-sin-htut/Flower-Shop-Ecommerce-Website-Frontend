@@ -39,7 +39,6 @@ export const editProduct = (formData: FormData, id: number) =>
 export const deleteProductById = (id: number) =>
     axios.delete(`${PRODUCTS_BACKEND_URL}/delete.php?id=${id}`);
 
-// token: string
 export const checkout = (items: { id: number; quantity: number; price: number; }[], role: string) =>
     axios.post(
         API_URL + "/checkout.php",
@@ -48,7 +47,6 @@ export const checkout = (items: { id: number; quantity: number; price: number; }
             quantity: item.quantity,
             totalPrice: item.price * item.quantity
         })),
-        // { headers: { Authorization: token } }
         { headers: { "X-Role": role } }
     );
 

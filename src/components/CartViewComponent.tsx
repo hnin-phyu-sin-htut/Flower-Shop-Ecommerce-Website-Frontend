@@ -44,7 +44,6 @@ export default function CartViewComponent() {
     };
 
     const confirmOrder = async () => {
-        // const token = getToken();
         const role = "ROLE_CUSTOMER"
         if (!role) {
             setError("Only customers can order flowers.");
@@ -62,7 +61,6 @@ export default function CartViewComponent() {
                     quantity: item.quantity,
                     price: item.price
                 })),
-                // token
                 role
             );
 

@@ -46,11 +46,11 @@ export default function LoginComponent() {
                     const message = err.response.data?.message || "";
                     const status = err.response.status;
                     if(status === 401 || message.toLowerCase().includes('invalid')) {
-                        setErrorMessage("Invalid username or password.");
+                        setErrorMessage("Invalid username or password!");
                         setLoginDto({...loginDto, username: "", password: ""});
                     }
                 }else{
-                    setErrorMessage("Login failed! Please try again.");
+                    setErrorMessage("Login failed! Please try again!");
                     setLoginDto({...loginDto, username: "", password: ""});
                 }
             }

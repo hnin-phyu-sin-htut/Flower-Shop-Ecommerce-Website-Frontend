@@ -23,7 +23,7 @@ export default function CreateCategory() {
             .then(() => {
                 setCategoryName("");
                 fetchAllCategories();
-                setSuccessMessage("Category created successfully.");
+                setSuccessMessage("Category created successfully!");
                 setTimeout(() => setSuccessMessage(""), 3000);
             })
             .catch((err) => {

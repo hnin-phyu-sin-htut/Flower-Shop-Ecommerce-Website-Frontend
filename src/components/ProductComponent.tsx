@@ -128,17 +128,24 @@ export default function ProductComponent() {
                             onClick={() => {
                                 if (!isCustomer || !loggedIn) {
                                     navigator("/login", {
-                                        state: { infoMessage: "Please login to purchase flowers." },
+                                        state: { infoMessage: "Please login to purchase flowers!" },
                                     });
                                     return;
                                 }
-                                addedQuantityHandler(item);
+                                const cartItem: CartItem = {
+                                    id: item.id,
+                                    name: item.name,
+                                    price: item.price ?? 0,
+                                    image: item.image ?? "/images/no-images.png",
+                                    quantity: 1
+                                };
+                                addedQuantityHandler(cartItem);
                             }}>
                             Add To Cart
                         </button>
 
                         {addedQuantity[item.id] > 0 && loggedIn && isCustomer && (
-                            <div className="absolute bottom-2 flex items-center text-[#C21E56] text-sm">
+                            <div className="absolute bottom-1 flex items-center text-[#C21E56] text-sm">
                                 <IoMdCheckmarkCircleOutline size={20} className="mr-1" />
                                 Added {addedQuantity[item.id]}
                             </div>
