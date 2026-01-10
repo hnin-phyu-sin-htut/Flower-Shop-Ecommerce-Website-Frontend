@@ -8,6 +8,9 @@ import AdminDashboard from "./components/admin-dashboard/AdminDashboard.tsx";
 import CreateCategory from "./components/admin-dashboard/CreateCategory.tsx";
 import AdminLayout from "./AdminLayout.tsx";
 import UserLayout from "./UserLayout.tsx";
+import ServicesComponent from "./components/ServicesComponent.tsx";
+import ContactComponent from "./components/ContactComponent.tsx";
+import AboutComponent from "./components/AboutComponent.tsx";
 
 export default function App() {
   return (
@@ -19,6 +22,9 @@ export default function App() {
             <Route path="/register" element={<RegisterComponent />}></Route>
             <Route path="/login" element={<LoginComponent />}></Route>
             <Route path="/products" element={<ProductComponent />}></Route>
+            <Route path="/services" element={<ServicesComponent />}></Route>
+            <Route path="/about" element={<AboutComponent />}></Route>
+            <Route path="/contact" element={<ContactComponent />}></Route>
             <Route path="/cart-view" element={<CartViewComponent />}></Route>
           </Route>
           <Route path="/admin-dashboard" element={<AdminLayout />}>

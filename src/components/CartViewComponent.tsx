@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import type { OrderInfo } from "../model/OrderInfo";
 import { checkout } from "../service/ProductService";
+import { getRoleName} from "../service/AuthService.ts";
 
 export default function CartViewComponent() {
     const cart = useContext(CartContext);
@@ -44,11 +45,13 @@ export default function CartViewComponent() {
     };
 
     const confirmOrder = async () => {
-        const role = "ROLE_CUSTOMER"
-        if (!role) {
-            setError("Only customers can order flowers.");
+        const role = getRoleName();
+
+        if (role !== "ROLE_CUSTOMER") {
+            setError("Only customers can place orders.");
             return;
         }
+
         setLoading(true);
         setError("");
 
@@ -64,25 +67,24 @@ export default function CartViewComponent() {
                 role
             );
 
-            if (response.data?.products?.length) {
+            console.log("Checkout response: ", response.data);
+
+            if (response.data?.id) {
                 setOrderInfo({
                     ...response.data,
-                    orderNumber:
-                        response.data.orderNumber ??
-                        response.data.order_number ??
-                        response.data.id,
+                    orderNumber: response.data.orderNumber
                 });
                 setConfirmed(true);
 
                 setTimeout(() => {
-                    navigate("/");
                     cart.clearCart();
+                    navigate("/");
                 }, 3000);
             } else {
-                setError("Failed to save order.");
+                setError("Order was not saved!");
             }
         } catch (err) {
-            console.error("Confirm order failed!", err);
+            console.error("Order confirmation failed!", err);
             setError("Could not confirm order. Please try again.");
         } finally {
             setLoading(false);

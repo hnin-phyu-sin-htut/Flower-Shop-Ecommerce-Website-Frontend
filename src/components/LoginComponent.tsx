@@ -60,13 +60,13 @@ export default function LoginComponent() {
     return (
         <>
             <div className="mt-20 mb-20 flex items-center justify-center bg-gray-50 px-4">
-                <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl border border-gray-100 p-8">
+                <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl border border-[#F4C2C2] p-8">
                     <h2 className="text-3xl font-extrabold text-center text-[#C21E56] mb-6">
                         Login
                     </h2>
                     {
                         infoMessage && (
-                            <p className="text-blue-500 text-lg text-center mb-2">
+                            <p className="text-[#C21E56] text-lg text-center mb-2">
                                 {infoMessage}
                             </p>
                         )
@@ -85,7 +85,7 @@ export default function LoginComponent() {
                             value={loginDto.username}
                             onChange={e => setLoginDto({...loginDto, username: e.target.value})}
                             placeholder="Username or Email"
-                            className="w-full p-3 rounded-xl border border-gray-300 text-gray-800 placeholder-gray-400
+                            className="w-full px-4 py-3 rounded-xl border border-gray-300 text-gray-800 placeholder-gray-400
                            focus:outline-none focus:ring-2 focus:ring-[#C21E56] focus:border-transparent
                            transition-shadow duration-200 shadow-sm"/>
 
@@ -95,20 +95,20 @@ export default function LoginComponent() {
                             value={loginDto.password}
                             onChange={e => setLoginDto({...loginDto, password: e.target.value})}
                             placeholder="Password"
-                            className="w-full p-3 rounded-xl border border-gray-300 text-gray-800 placeholder-gray-400
+                            className="w-full px-4 py-3 rounded-xl border border-gray-300 text-gray-800 placeholder-gray-400
                            focus:outline-none focus:ring-2 focus:ring-[#C21E56] focus:border-transparent
                            transition-shadow duration-200 shadow-sm"/>
 
                         <button
                             onClick={handleSubmit}
-                            className="w-full mt-4 p-3 bg-[#C21E56] text-white font-semibold rounded-lg shadow-lg
-                           hover:bg-white hover:text-[#C21E56] hover:border hover:border-[#C21E56]
-                           transition-colors duration-300">
+                            className="w-full mt-2 p-3 bg-[#C21E56] text-white font-semibold rounded-full shadow-lg
+                               cursor-pointer hover:bg-white hover:text-[#C21E56] hover:border hover:border-[#C21E56]
+                               transition-colors duration-300">
                             Login
                         </button>
                     </div>
 
-                    <p className="text-center text-gray-500 mt-6 text-sm">
+                    <p className="text-center text-gray-500 mt-4 text-md">
                         Don't have an account?{" "}
                         <a href="/register" className="text-[#C21E56] font-medium">
                             Register

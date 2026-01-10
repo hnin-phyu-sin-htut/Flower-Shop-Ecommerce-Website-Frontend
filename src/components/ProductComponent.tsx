@@ -32,7 +32,6 @@ export default function ProductComponent() {
     const { addItem } = useContext(CartContext);
     const [addedQuantity, setAddedQuantity] = useState<Record<number, number>>({});
     const navigator = useNavigate();
-
     const userRole = getRoleName();
     const isCustomer = userRole === "ROLE_CUSTOMER";
     const loggedIn = isLoggedIn();
@@ -71,7 +70,7 @@ export default function ProductComponent() {
     });
 
     return (
-        <div className="container mx-auto mt-10 mb-16 px-4">
+        <div className="container mx-auto pt-12 px-12 mb-16 bg-pink-50">
             <h1 className="text-3xl font-bold text-center text-[#C21E56] mb-6">
                 Flowers Collection
             </h1>
@@ -82,7 +81,7 @@ export default function ProductComponent() {
                     placeholder="Search flowers..."
                     value={search}
                     onChange={e => setSearch(e.target.value)}
-                    className="w-full max-w-xl px-4 py-3 rounded-full border-2 border-[#C21E56]
+                    className="w-full max-w-xl px-6 py-3 rounded-full border-2 border-[#C21E56]
                     focus:outline-none focus:ring-2 focus:ring-[#C21E56] text-black"/>
             </div>
 
@@ -91,7 +90,7 @@ export default function ProductComponent() {
                     <button
                         key={cat}
                         onClick={() => setActiveCategory(cat)}
-                        className={`px-4 py-2 rounded-full whitespace-nowrap border transition
+                        className={`px-4 py-2 rounded-full whitespace-nowrap border transition cursor-pointer
                         ${
                             activeCategory === cat
                                 ? "bg-[#C21E56] text-white border-[#C21E56]"
@@ -107,7 +106,7 @@ export default function ProductComponent() {
                 {filteredProducts.map(item => (
                     <div
                         key={item.id}
-                        className="relative rounded-xl border-2 border-[#C21E56]
+                        className="relative rounded-xl border border-[#C21E56]
                         shadow-md bg-white p-6 flex flex-col items-center">
                         <img
                             src={item.image ? `http://localhost:2024${item.image}` : "/images/no-images.png"}
@@ -123,8 +122,8 @@ export default function ProductComponent() {
                         </p>
 
                         <button
-                            className="w-full bg-[#C21E56] text-white py-2 rounded
-                            transition hover:bg-transparent hover:text-[#C21E56] hover:border-2 hover:border-[#C21E56]"
+                            className="w-full bg-[#C21E56] text-white py-2 rounded-full cursor-pointer transition
+                            hover:bg-transparent hover:text-[#C21E56] hover:border hover:border-[#C21E56]"
                             onClick={() => {
                                 if (!isCustomer || !loggedIn) {
                                     navigator("/login", {

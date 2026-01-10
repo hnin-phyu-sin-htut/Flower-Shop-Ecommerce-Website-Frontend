@@ -85,7 +85,7 @@ export default function RegisterComponent() {
                             name="username"
                             onChange={e => setRegisterDto({...registerDto, username: e.target.value})}
                             placeholder="Username"
-                            className="w-full p-3 rounded-xl border border-gray-300 text-gray-800 placeholder-gray-400
+                            className="w-full px-4 py-3 rounded-xl border border-gray-300 text-gray-800 placeholder-gray-400
                            focus:outline-none focus:ring-2 focus:ring-[#C21E56] focus:border-transparent
                            transition-shadow duration-200 shadow-sm"
                         />
@@ -95,7 +95,7 @@ export default function RegisterComponent() {
                             name="email"
                             onChange={e => setRegisterDto({...registerDto, email: e.target.value})}
                             placeholder="Email"
-                            className="w-full p-3 rounded-xl border border-gray-300 text-gray-800 placeholder-gray-400
+                            className="w-full px-4 py-3 rounded-xl border border-gray-300 text-gray-800 placeholder-gray-400
                            focus:outline-none focus:ring-2 focus:ring-[#C21E56] focus:border-transparent
                            transition-shadow duration-200 shadow-sm"
                         />
@@ -105,7 +105,7 @@ export default function RegisterComponent() {
                             name="password"
                             onChange={e => setRegisterDto({...registerDto, password: e.target.value})}
                             placeholder="Password"
-                            className="w-full p-3 rounded-xl border border-gray-300 text-gray-800 placeholder-gray-400
+                            className="w-full px-4 py-3 rounded-xl border border-gray-300 text-gray-800 placeholder-gray-400
                            focus:outline-none focus:ring-2 focus:ring-[#C21E56] focus:border-transparent
                            transition-shadow duration-200 shadow-sm"
                         />
@@ -115,7 +115,7 @@ export default function RegisterComponent() {
                             name="phone"
                             onChange={e => setRegisterDto({...registerDto, phone: e.target.value})}
                             placeholder="Phone"
-                            className="w-full p-3 rounded-xl border border-gray-300 text-gray-800 placeholder-gray-400
+                            className="w-full px-4 py-3 rounded-xl border border-gray-300 text-gray-800 placeholder-gray-400
                            focus:outline-none focus:ring-2 focus:ring-[#C21E56] focus:border-transparent
                            transition-shadow duration-200 shadow-sm"
                         />
@@ -127,7 +127,7 @@ export default function RegisterComponent() {
                                     name="address"
                                     onChange={e => setRegisterDto({...registerDto, address: e.target.value})}
                                     placeholder="Address"
-                                    className="w-full p-3 rounded-xl border border-gray-300 text-gray-800 placeholder-gray-400
+                                    className="w-full px-4 py-3 rounded-xl border border-gray-300 text-gray-800 placeholder-gray-400
                                    focus:outline-none focus:ring-2 focus:ring-[#C21E56] focus:border-transparent
                                    transition-shadow duration-200 shadow-sm"
                                 />
@@ -145,14 +145,14 @@ export default function RegisterComponent() {
 
                         <button
                             onClick={registerHandler}
-                            className="w-full mt-4 p-3 bg-[#C21E56] text-white font-semibold rounded-lg shadow-lg
-                           hover:bg-white hover:text-[#C21E56] hover:border hover:border-[#C21E56]
-                           transition-colors duration-300">
+                            className="w-full mt-4 p-3 bg-[#C21E56] text-white font-semibold rounded-full shadow-lg
+                               cursor-pointer hover:bg-white hover:text-[#C21E56] hover:border hover:border-[#C21E56]
+                               transition-colors duration-300">
                             Register Now
                         </button>
                     </div>
 
-                    <p className="text-center text-gray-500 mt-6 text-sm">
+                    <p className="text-center text-gray-500 mt-4 text-md">
                         Already have an account?{" "}
                         <a href="/login" className="text-[#C21E56] font-medium">
                             Login

@@ -18,10 +18,10 @@ export default function NavbarComponent() {
     navigate("/login");
     window.location.reload();
   }
-
+  // bg-[#F4C2C2]
   return (
-      <header className="bg-[#F4C2C2] w-full sticky top-0 z-50">
-        <nav className="max-w-9xl flex items-center justify-between px-4 sm:px-6 lg:px-16 py-4">
+      <header className="bg-white w-full sticky top-0 z-50 border-b border-b-[#F4C2C2]">
+        <nav className="max-w-9xl flex items-center justify-between px-4 sm:px-6 lg:px-16 py-2">
           <div style={{ fontFamily: "Times New Roman, serif" }} className="text-[#C21E56] flex items-baseline gap-4 mx-4">
             <Link to="/" className="flex">
               <span className="text-5xl sm:text-6xl font-bold pb-4">S</span>
