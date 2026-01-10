@@ -28,17 +28,33 @@ export default function LoginComponent() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         login(loginDto).then(res => {
-            const {username, roleName} = res.data;
+            // const {username, roleName} = res.data;
+
+            const user = res.data;
+
+            localStorage.setItem("user", JSON.stringify(user));
+            setLoggedInUserName(user.username);
+            setRoleName(user.roleName);
+
             const token = 'Basic ' + btoa(loginDto.username + ':' + loginDto.password);
             setToken(token);
-            setLoggedInUserName(username);
-            setRoleName(roleName);
+
+            // setLoggedInUserName(username);
+            // setRoleName(roleName);
+
             setLoginDto({...loginDto, username: "", password: ""});
-            if('ROLE_ADMIN' === roleName){
+
+            if(user.roleName === 'ROLE_ADMIN'){
                 navigator('/admin-dashboard');
-            }else if('ROLE_CUSTOMER' === roleName){
+            } else if(user.roleName === 'ROLE_CUSTOMER'){
                 navigator('/');
             }
+
+            // if('ROLE_ADMIN' === roleName){
+            //     navigator('/admin-dashboard');
+            // }else if('ROLE_CUSTOMER' === roleName){
+            //     navigator('/');
+            // }
             window.location.reload();
         }).catch(
             err => {

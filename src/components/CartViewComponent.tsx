@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import type { OrderInfo } from "../model/OrderInfo";
 import { checkout } from "../service/ProductService";
-import { getRoleName} from "../service/AuthService.ts";
+import { getUserId} from "../service/AuthService.ts";
 
 export default function CartViewComponent() {
     const cart = useContext(CartContext);
@@ -45,40 +45,32 @@ export default function CartViewComponent() {
     };
 
     const confirmOrder = async () => {
-        const role = getRoleName();
+        const userId = getUserId();
 
-        if (role !== "ROLE_CUSTOMER") {
-            setError("Only customers can place orders.");
+        if (!userId) {
+            setError("Please login first to place orders.");
             return;
         }
-
         setLoading(true);
         setError("");
-
-        await Promise.resolve();
 
         try {
             const response = await checkout(
                 itemsWithSubTotal.map(item => ({
                     id: item.id,
                     quantity: item.quantity,
-                    price: item.price
+                    price: item.price ?? 0
                 })),
-                role
+                userId
             );
-
-            console.log("Checkout response: ", response.data);
-
-            if (response.data?.id) {
-                setOrderInfo({
-                    ...response.data,
-                    orderNumber: response.data.orderNumber
-                });
+            console.log("User ID :: " + userId);
+            if (response.status === 200 && response.data?.id) {
+                setOrderInfo(response.data);
                 setConfirmed(true);
 
                 setTimeout(() => {
-                    cart.clearCart();
                     navigate("/");
+                    cart.clearCart();
                 }, 3000);
             } else {
                 setError("Order was not saved!");
@@ -229,10 +221,10 @@ export default function CartViewComponent() {
                     </div>
 
                     {!confirmed && (
-                        <div className="flex justify-center mt-4">
+                        <div className="flex justify-end mt-4">
                             <button
                                 onClick={confirmOrder}
-                                disabled={loading}
+                                disabled={loading || items.length === 0}
                                 className="px-6 py-3 font-semibold rounded-full bg-white text-[#C21E56] shadow-lg
                                 transition cursor-pointer hover:bg-[#C21E56] hover:text-white hover:border
                                 hover:border-white">

@@ -39,15 +39,23 @@ export const editProduct = (formData: FormData, id: number) =>
 export const deleteProductById = (id: number) =>
     axios.delete(`${PRODUCTS_BACKEND_URL}/delete.php?id=${id}`);
 
-export const checkout = (items: { id: number; quantity: number; price: number; }[], role: string) =>
+export const checkout = (
+    items: { id: number; quantity: number; price: number; name?: string }[],
+    userId: number
+) =>
     axios.post(
-        API_URL + "/checkout.php",
+        `${API_URL}/checkout.php`,
         items.map(item => ({
             id: item.id,
             quantity: item.quantity,
-            totalPrice: item.price * item.quantity
+            price: item.price ?? 0,
+            name: item.name ?? ""
         })),
-        { headers: { "X-Role": role } }
+        {
+            headers: {
+                "Content-Type": "application/json",
+                "X-USER-ID": userId.toString()
+            }
+        }
     );
-
 

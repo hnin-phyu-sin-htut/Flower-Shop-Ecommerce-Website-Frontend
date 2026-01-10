@@ -10,13 +10,27 @@ export const register = (registerDto: RegisterDto) =>
 export const login = (loginDto: LoginDto) =>
     axios.post(FLOWER_SHOP_BACKEND_URL + "/login.php", loginDto);
 
+export const getUserId = (): number | null => {
+    const user = localStorage.getItem("user");
+    if (!user) return null;
+    try {
+        return JSON.parse(user).id ?? null;
+    } catch {
+        return null;
+    }
+};
+
 export const logout =() =>{
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("loggedInUserName");
+    localStorage.removeItem("token");
+    sessionStorage.removeItem("username");
+    sessionStorage.removeItem("roleName");
 }
 
 export const setToken = (token: string) =>
     localStorage.setItem("token", token);
+
+export const getToken = () =>
+    localStorage.getItem("token");
 
 export const isLoggedIn = () =>
     localStorage.getItem("token") !== null;
@@ -29,6 +43,7 @@ export const getRoleName = () =>
 
 export const setLoggedInUserName = (username: string) =>
     sessionStorage.setItem("username", username);
+
 
 
 
