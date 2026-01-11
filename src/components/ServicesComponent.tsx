@@ -104,7 +104,7 @@ export default function ServicesComponent() {
                 </div>
             </section>
 
-            <section className="bg-white mt-4 mb-12">
+            <section className="mt-4 mb-12">
                 <div className="max-w-6xl mx-auto px-6">
                     <h2 className="text-3xl font-bold text-[#C21E56] mb-10 text-center">Customer Reviews</h2>
                     <div className="grid md:grid-cols-3 gap-12">
@@ -113,19 +113,19 @@ export default function ServicesComponent() {
                                 name: "Jennie Kim",
                                 review: "Beautiful flowers, fast delivery and great service. Loved it!",
                                 rating: 5,
-                                image: "https://randomuser.me/api/portraits/women/68.jpg"
+                                image: "/images/customer1.jpg"
                             },
                             {
-                                name: "John Smith",
+                                name: "Lee Kwang Soo",
                                 review: "Excellent bouquet quality and amazing customer support!",
                                 rating: 5,
-                                image: "https://randomuser.me/api/portraits/men/32.jpg"
+                                image: "/images/customer2.jpg"
                             },
                             {
-                                name: "Snow White",
+                                name: "PondPhuwin",
                                 review: "Highly recommend this flower shop for any occasion!",
                                 rating: 5,
-                                image: "https://randomuser.me/api/portraits/women/44.jpg"
+                                image: "/images/customer3.jpg"
                             }
                         ].map((t, i) => (
                             <div

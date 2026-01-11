@@ -102,7 +102,7 @@ export default function EditProduct() {
                         value={searchTerm}
                         onChange={e => setSearchTerm(e.target.value)}
                         placeholder="Search by flower name or category..."
-                        className="w-full max-w-md px-5 py-3 border-2 rounded-full
+                        className="w-full max-w-md px-6 py-3 border-2 rounded-full
                         focus:outline-none focus:ring-2 focus:ring-[#C21E56]"
                     />
                 </div>

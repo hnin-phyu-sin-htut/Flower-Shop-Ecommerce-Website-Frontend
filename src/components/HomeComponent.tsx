@@ -24,11 +24,10 @@ export default function HomeComponent() {
                 <div className="max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
                     <div className="md:w-1/2 text-center md:text-left">
                         <h1 className="text-5xl md:text-6xl font-extrabold mb-6 drop-shadow-lg">
-                            Fresh Flowers, Handpicked with Love
+                            Bloom Something Beautiful Today
                         </h1>
                         <p className="text-lg md:text-xl opacity-90 mb-6">
-                            Brighten your day and surprise your loved ones with beautiful bouquets delivered fresh
-                            to your door.
+                            Handcrafted bouquets made to turn moments into memories - fresh, fragrant, and full of love.
                         </p>
                         <button
                             className="inline-block bg-white text-[#C21E56] px-8 py-3 rounded-full font-semibold
@@ -45,9 +44,9 @@ export default function HomeComponent() {
                             Shop Now
                         </button>
                     </div>
-                    <div className="md:w-110">
+                    <div className="md:w-200">
                         <img
-                            src="/images/flower-shop.jpg"
+                            src="/images/welcom-image.png"
                             alt="Flowers"
                             className="rounded-full shadow-md mx-auto md:mx-0 w-full object-cover"
                         />
@@ -111,7 +110,7 @@ export default function HomeComponent() {
                     <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                         <div className="border border-[#F4C2C2] rounded-xl shadow-lg hover:shadow-2xl p-6 transition">
                             <img
-                                src="/images/no-image.png"
+                                src="/images/sakura-cherry-blossom.png"
                                 alt="Seasonal Flower"
                                 className="rounded-xl w-full h-48 object-cover mb-4"
                             />
@@ -119,7 +118,7 @@ export default function HomeComponent() {
                         </div>
                         <div className="border border-[#F4C2C2] rounded-xl shadow-lg hover:shadow-2xl p-6 transition">
                             <img
-                                src="/images/no-image.png"
+                                src="/images/summer-sunflower-luxe.png"
                                 alt="Seasonal Flower"
                                 className="rounded-xl w-full h-48 object-cover mb-4"
                             />
@@ -127,7 +126,7 @@ export default function HomeComponent() {
                         </div>
                         <div className="border border-[#F4C2C2] rounded-xl shadow-lg hover:shadow-2xl p-6 transition">
                             <img
-                                src="/images/no-image.png"
+                                src="/images/autumn-chrysanthemum.png"
                                 alt="Seasonal Flower"
                                 className="rounded-xl w-full h-48 object-cover mb-4"
                             />
@@ -135,7 +134,7 @@ export default function HomeComponent() {
                         </div>
                         <div className="border border-[#F4C2C2] rounded-xl shadow-lg hover:shadow-2xl p-6 transition">
                             <img
-                                src="/images/no-image.png"
+                                src="/images/winter-amaryllis.png"
                                 alt="Seasonal Flower"
                                 className="rounded-xl w-full h-48 object-cover mb-4"
                             />

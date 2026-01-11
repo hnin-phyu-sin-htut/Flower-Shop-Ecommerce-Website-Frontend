@@ -1,12 +1,12 @@
 {
   "home-flowers" : [
-    { "id": 1, "name": "Blush Garden Bouquet", "image": "/images/no-image.png" },
-    { "id": 2, "name": "Golden Hour Blooms", "image": "/images/no-image.png" },
-    { "id": 3, "name": "Cloud Nine Bouquet", "image": "/images/no-image.png" },
-    { "id": 4, "name": "Classic Red Rose Bundle", "image": "/images/no-image.png" },
-    { "id": 5, "name": "Pink Romance Roses", "image": "/images/no-image.png" },
-    { "id": 6, "name": "Luxury Long-Stem Roses", "image": "/images/no-image.png" },
-    { "id": 7, "name": "Valentine Red Rose Classic", "image": "/images/no-image.png" },
-    { "id": 8, "name": "Timeless Bridal Flowers", "image": "/images/no-image.png" }
+    { "id": 1, "name": "Blue Moon Roses", "image": "/images/blue-moon-roses.png" },
+    { "id": 2, "name": "Cappuccino Roses", "image": "/images/cappuccino-roses.png" },
+    { "id": 3, "name": "Ecuador Giant Red Roses", "image": "/images/ecuador-giant-red-roses.png" },
+    { "id": 4, "name": "Pink Lily", "image": "/images/pink-lily.png" },
+    { "id": 5, "name": "Yellow Roses", "image": "/images/yellow-roses.png" },
+    { "id": 6, "name": "Freesia Spring Bouquet", "image": "/images/freesia-spring-bouquet.png" },
+    { "id": 7, "name": "Orchid Phalaenopsis", "image": "/images/orchid-phalaenopsis.png" },
+    { "id": 8, "name": "Mini Cake Flower", "image": "/images/mini-cake-flower.png" }
   ]
 }

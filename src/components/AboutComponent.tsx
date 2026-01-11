@@ -11,7 +11,7 @@ export default function AboutComponent() {
 
             <div className="w-full max-w-5xl grid md:grid-cols-2 gap-12 items-center">
                 <img
-                    src="/images/Zora.jpg"
+                    src="/images/about-image.png"
                     alt="Bouquet Arrangement"
                     className="w-full h-85 object-cover rounded-2xl shadow-lg border border-[#C21E56]"/>
 
