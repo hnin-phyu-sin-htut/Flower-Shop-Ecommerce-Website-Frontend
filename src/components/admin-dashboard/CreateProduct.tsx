@@ -6,7 +6,6 @@ export default function CreateProduct() {
     const [categories, setCategories] = useState<CategoryDto[]>([]);
     const [name, setName] = useState("");
     const [price, setPrice] = useState<number>();
-    // const [quantity, setQuantity] = useState<number>();
     const [categoryId, setCategoryId] = useState<string>("");
     const [image, setImage] = useState<File | "">("");
     const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
@@ -28,7 +27,6 @@ export default function CreateProduct() {
         const formData = new FormData();
         formData.append("name", name);
         formData.append("price", price.toString());
-        // formData.append("quantity", quantity.toString());
         formData.append("categoryId", categoryId);
         formData.append("image", image);
 
@@ -36,7 +34,6 @@ export default function CreateProduct() {
             await createProduct(formData);
             setName("");
             setPrice(undefined);
-            // setQuantity(undefined);
             setCategoryId("");
             setImage("");
             setMessage({ type: "success", text: "Flower created successfully!" });

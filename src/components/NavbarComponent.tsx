@@ -18,7 +18,7 @@ export default function NavbarComponent() {
     navigate("/login");
     window.location.reload();
   }
-  // bg-[#F4C2C2]
+
   return (
       <header className="bg-white w-full sticky top-0 z-50 border-b border-b-[#F4C2C2]">
         <nav className="max-w-9xl flex items-center justify-between px-4 sm:px-6 lg:px-16 py-2">

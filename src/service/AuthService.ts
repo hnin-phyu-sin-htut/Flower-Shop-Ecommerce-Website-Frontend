@@ -29,9 +29,6 @@ export const logout =() =>{
 export const setToken = (token: string) =>
     localStorage.setItem("token", token);
 
-export const getToken = () =>
-    localStorage.getItem("token");
-
 export const isLoggedIn = () =>
     localStorage.getItem("token") !== null;
 

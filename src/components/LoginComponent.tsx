@@ -28,8 +28,6 @@ export default function LoginComponent() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         login(loginDto).then(res => {
-            // const {username, roleName} = res.data;
-
             const user = res.data;
 
             localStorage.setItem("user", JSON.stringify(user));
@@ -39,9 +37,6 @@ export default function LoginComponent() {
             const token = 'Basic ' + btoa(loginDto.username + ':' + loginDto.password);
             setToken(token);
 
-            // setLoggedInUserName(username);
-            // setRoleName(roleName);
-
             setLoginDto({...loginDto, username: "", password: ""});
 
             if(user.roleName === 'ROLE_ADMIN'){
@@ -49,12 +44,6 @@ export default function LoginComponent() {
             } else if(user.roleName === 'ROLE_CUSTOMER'){
                 navigator('/');
             }
-
-            // if('ROLE_ADMIN' === roleName){
-            //     navigator('/admin-dashboard');
-            // }else if('ROLE_CUSTOMER' === roleName){
-            //     navigator('/');
-            // }
             window.location.reload();
         }).catch(
             err => {
